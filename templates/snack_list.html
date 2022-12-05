@@ -1,9 +1,67 @@
 {% extends 'base.html' %}
 {% block body %}
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'poppins', sans-serif;
+        text-decoration: none;
+        margin: 0;
+        padding: o;
+      }
+      
+      .container {
+        justify-content: center;
+        display:inline-block;
+        align-items: center;
+        height: 50vh;
+        padding: 4rem 6rem 0;
+      }
+      
+      .card {
+        width: 320px;
+        height: 300px;
+        background-color:#ececec;
+        border-radius: 1rem;
+        padding: 2rem 2rem 0;
+      }
+      
+      
+      .h1{
+        color: #e8630a ;
+      }
+      
+      .data {
+        transform: translateY(4.8rem);
+      }
+      
+      
+      
+      
+      
+      .button {
+        display: inline-block;
+        width: max-content;
+        padding: 1rem 2rem;
+        background-color: #e8630a;
+        color: #e8630a;
+        border-radius: .5rem;
+        font-weight: 600;
+      
+      }
+</style>
 {%for snack in list_of_snacks%}
-<h1>Title : {{snack.title}}</h1>
-<button><a href="{% url 'snack_detail' snack.pk %}">Details</a></button>
 
+<div class="container">
+    <div class="card">
+        <h1 class="h1"> {{snack.title}}</h1>
+
+        <div class="data">
+            
+            <button class="button"><a href="{% url 'snack_detail' snack.pk %}">Details</a></button>
+              
+        </div>
+    </div>
+  </div>
 {% endfor %}
 
 {% endblock %}
