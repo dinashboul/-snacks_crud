@@ -28,4 +28,4 @@
 ### pip freeze> instal requirement.txt
 ### pip install django
 
-## PR 
+## PR : https://github.com/dinashboul/-snacks_crud/pull/1
