@@ -1,15 +1,45 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href="{% static 'css/file.css'%}"></link>
   <title>Snacks!!!</title>
+ 
+
 </head>
+<style>
+  .navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    justify-content: right;
+    height:3rem;
+    }
+    .navbar a:hover {
+    background-color:#f5c7f7;
+    color: #eef2e2;;
+    }
+    
+    .navbar a.active {
+    color:#eef2e2;
+    padding: 3rem 2rem;
+    font-size:2rem
+    
+    
+    }
+</style>
 <header>
     <nav>
-        <a href="{% url 'home'%}">Home</a>
-        <a href="{% url 'snack_list'%}">Snacks</a>
-        <a href="{% url 'create_snack' %}">Create snaks </a>
+      <div class="navbar">
+        <a href="{% url 'home'%}" class="active">Home</a>
+        <a href="{% url 'snack_list'%}" class="active">Snacks</a>
+        <a href="{% url 'create_snack' %}" class="active">Create snaks </a>
+      </div>
+       
         
     </nav>
   
