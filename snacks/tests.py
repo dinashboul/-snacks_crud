@@ -15,16 +15,16 @@ class SnackTest(TestCase):
     def setUp(self):
 
         self.user = get_user_model().objects.create_user(
-            username="tester", email="tester@email.com", password="pass"
+            username="test", email="tester@email.com", password="pass"
         )
 
         self.snack = Snack.objects.create(
-            title="KEYBORAD", description="description test", purchaser=self.user,
+            title="TEST", description="description test", purchaser=self.user,
         )
 
 
     def test_string (self):
-        self.assertEqual(str(self.snack), "KEYBORAD")    
+        self.assertEqual(str(self.snack), "TEST")    
 
     def test_snack_details(self) :
         url= reverse('snack_detail',args="1")
@@ -32,15 +32,18 @@ class SnackTest(TestCase):
         self.assertEqual(response.status_code,200)  
         self.assertTemplateUsed(response, "snack_detail.html")
 
-    def test_create(self):
-        url=reverse('create_snack')  
-        response=self.client.post(url,
-         {
-                "title": "KEYBORAD",
+    def test_create_view(self):
+
+        data={
+                "title": "test",
                 "description": "test",
-                "purchaser": self.user.id,
-            }, follow=True)
-        self.assertRedirects(response, reverse("snack_list") )  
+                "purchaser": self.user.id,  
+
+         }
+        url = reverse('create_snack')
+        response= self.client.post(path=url,data=data,follow=True)
+        self.assertRedirects(response,reverse('snack_list'))
+    
     
     def test_delete(self):
         url=reverse('delete_snack',args='1')
